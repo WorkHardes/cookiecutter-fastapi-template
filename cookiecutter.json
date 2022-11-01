@@ -1,0 +1,21 @@
+{
+  "full_name": "Arkady",
+  "email": "example@example.com",
+  "github_username": "WorkHardes",
+  "project_name": "cookiecutter-fastapi-template",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "This project contains fastapi boilerplate.",
+  "pypi_username": "{{ cookiecutter.github_username }}",
+  "version": "0.1.0",
+  "use_pytest": "n",
+  "use_black": "y",
+  "use_pypi_deployment_with_travis": "n",
+  "add_pyup_badge": "n",
+  "command_line_interface": [
+    "No command-line interface"
+  ],
+  "create_author_file": "n",
+  "open_source_license": [
+    "Not open source"
+  ]
+}
