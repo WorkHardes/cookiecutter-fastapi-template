@@ -19,8 +19,8 @@ make start-server
 
 After server start:
 
-- swagger docs - `http://localhost:8000/docs`
-- redoc - `http://localhost:8000/redoc`
+- swagger docs - `http://localhost:4000/docs`
+- redoc - `http://localhost:4000/redoc`
 
 ---
 
