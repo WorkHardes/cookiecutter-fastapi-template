@@ -8,6 +8,6 @@ __pycache__
 .vscode
 
 # local folders
-
+.ruff_cache
 
 # local files
