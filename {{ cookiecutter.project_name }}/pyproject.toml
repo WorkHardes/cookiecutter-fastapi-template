@@ -20,20 +20,16 @@ autoflake = "^1.7.7"
 black = "^22.10.0"
 isort = "^5.10.1"
 mypy = "^0.982"
-flake8 = "^5.0.4"
-flake8-bugbear = "^22.10.27"
-flake8-simplify = "^0.19.3"
-flake8-class-attributes-order = "^0.1.3"
-flake8-comprehensions = "^3.10.1"
-flake8-use-fstring = "^1.4"
-flake8-functions-names = "^0.3.0"
-pep8-naming = "^0.13.2"
-yesqa = "^1.4.0"
-flake8-absolute-import = "^1.0.0"
-flake8-implicit-str-concat = "^0.3.0"
-flake8-black = "^0.3.3"
-flake8-isort = "^5.0.0"
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.178"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.autoflake]
+check = true
 
 [tool.black]
 line-length = 88
@@ -44,6 +40,7 @@ exclude = '''
   | \.git
   | \.hg
   | \.mypy_cache
+  | \.ruff_cache
   | \.tox
   | \.venv
   | _build
@@ -67,3 +64,39 @@ combine_as_imports = true
 skip_gitignore = true
 extra_standard_library = ["typing_extensions"]
 skip = []
+
+[tool.ruff]
+line-length = 88
+select = [
+    "F",   # pyflakes
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "S",   # flake8-bandit
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "PGH", # pygrep-hooks
+    "PLC", # pylint
+    "PLE", # pylint
+    "PLR", # pylint
+    "PLW", # pylint
+]
+ignore = [
+    "F401", # Module imported but unused
+    "S101", # Use of `assert` detected
+    "E999", # SyntaxError
+    "C901", # Function is too complex
+    "B904", # Must be raise from
+]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+]
+per-file-ignores = {}
+target-version = "py310"
