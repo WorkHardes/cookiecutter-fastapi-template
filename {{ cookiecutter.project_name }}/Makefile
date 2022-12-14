@@ -1,6 +1,6 @@
 help:
 	@echo "Commands:";
-	@echo "lint: lint code in app folder with flake8 linter";
+	@echo "lint: lint code in app folder with ruff linter";
 	@echo "init-pre-commit: init pre-commit in .git";
 	@echo "pre-commit: runs pre-commit";
 	@echo "start-server: starts server at host: '$(SERVER_HOST)' and port: '$(SERVER_PORT)'";
@@ -8,7 +8,7 @@ help:
 	@echo "run-docker-container: runs docker container with name '$(DOCKER_IMAGE_NAME)'";
 
 lint:
-	flake8 ./app/
+	ruff .
 
 init-pre-commit:
 	pre-commit install
