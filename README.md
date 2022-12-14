@@ -37,7 +37,6 @@ This repository contains a cookiecutter fastapi project template
 ├── scripts/
 ├── tests/
 ├── .editorconfig
-├──.flake8
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── docker-compose.yaml
