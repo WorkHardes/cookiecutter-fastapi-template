@@ -12,6 +12,7 @@ poetry install
 Run the app:
 
 ```bash
+. ./scripts/env.sh
 make start-server
 ```
 

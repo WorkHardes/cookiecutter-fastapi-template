@@ -45,3 +45,14 @@ This repository contains a cookiecutter fastapi project template
 ├── pyproject.toml
 └── README.md
 ```
+
+## Project installation
+
+Follow this commands:
+
+```bash
+cookiecutter gh:WorkHardes/cookiecutter-fastapi-template
+cd cookiecutter-fastapi-template
+poetry shell
+poetry install
+```
