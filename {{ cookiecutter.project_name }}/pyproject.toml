@@ -7,22 +7,19 @@ packages = [
     { include = "app" },
 ]
 
-
 [tool.poetry.dependencies]
-python = "^3.10"
-fastapi = "^0.89.0"
+python = "^3.11"
+fastapi = "^0.92.0"
 uvicorn = "^0.20.0"
 gunicorn = "^20.1.0"
 
-
-[tool.poetry.dev-dependencies]
-autoflake = "^2.0.0"
-black = "^22.12.0"
-isort = "^5.11.4"
-mypy = "^0.991"
-
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.0.217"
+autoflake = "^2.0.1"
+bandit = "^1.7.4"
+black = "^23.1.0"
+isort = "^5.12.0"
+mypy = "^0.991"
+ruff = "^0.0.247"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -33,25 +30,20 @@ check = true
 
 [tool.black]
 line-length = 88
-target-version = ['py310']
+target-version = ['py311']
 exclude = '''
 /(
-    \.eggs
-  | \.git
-  | \.hg
+    \.git
   | \.mypy_cache
   | \.ruff_cache
-  | \.tox
   | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
+  | scripts
+  | tests
 )/
 '''
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 warn_no_return = true
 warn_unreachable = true
 warn_incomplete_stub = true
@@ -62,54 +54,72 @@ profile = "black"
 line_length = 88
 combine_as_imports = true
 skip_gitignore = true
-extra_standard_library = ["typing_extensions"]
-skip = []
+skip = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "scripts",
+    "tests",
+]
 
 [tool.ruff]
+ignore-init-module-imports = true
 line-length = 88
+target-version = "py311"
 select = [
     "F",   # pyflakes
     "E",   # pycodestyle errors
     "W",   # pycodestyle warnings
-    "UP",  # pyupgrade
     "N",   # pep8-naming
+    "UP",  # pyupgrade
     "YTT", # flake8-2020
+    "ANN", # flake8-annotations
+    "FBT", # flake8-boolean-trap
     "S",   # flake8-bandit
     "B",   # flake8-bugbear
+    "A",   # flake8-builtins
     "C4",  # flake8-comprehensions
     "T10", # flake8-debugger
     "EM",  # flake8-errmsg
+    "EXE", # flake8-executable
     "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "PIE", # flake8-pie
     "T20", # flake8-print
+    "PYI", # flake8-pyi
     "PT",  # flake8-pytest-style
     "Q",   # flake8-quotes
+    "RSE", # flake8-raise
+    "SLF", # flake8-self
     "SIM", # flake8-simplify
     "TID", # flake8-tidy-imports
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
     "PGH", # pygrep-hooks
-    "PLC", # pylint
-    "PLE", # pylint
-    "PLR", # pylint
-    "PLW", # pylint
-    "PIE", # flake8-pie
-    "RUF",
+    "PLC", # pylint convention
+    "PLE", # pylint error
+    "PLR", # pylint refactor
+    "PLW", # pylint warning
+    "TRY", # tryceratops
+    "RUF", # Ruff-specific rules
 ]
 ignore = [
-    "F401",   # Module imported but unused
-    "S101",   # Use of `assert` detected
-    "E999",   # SyntaxError
-    "C901",   # Function is too complex
-    "B904",   # Must be raise from
-    "RUF001", # String contains ambiguous unicode character
-    "RUF002", # Docstring contains ambiguous unicode character
-    "RUF003", # Comment contains ambiguous unicode character
-
+    "E999",    # SyntaxError
+    "ANN102",  # Missing type annotation for `cls` in classmethod
+    "ANN206",  # Missing return type annotation for classmethod `__subclasshook__`
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `func`
+    "A003",    # Class attribute `class` is shadowing a python builtin
+    "PLR0912", # Too many branches
+    "TRY400",  # Use logging.exception instead of logging.error
+    "PTH123",  # open("foo") should be replaced by Path("foo").open()
+    "RUF001",  # String contains ambiguous unicode character
 ]
-# Exclude a variety of commonly ignored directories.
 exclude = [
     ".git",
     ".mypy_cache",
     ".ruff_cache",
     ".venv",
+    "scripts",
+    "tests",
 ]
-per-file-ignores = {}
-target-version = "py310"
