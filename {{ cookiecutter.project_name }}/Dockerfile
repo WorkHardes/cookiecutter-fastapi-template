@@ -17,7 +17,7 @@ WORKDIR /usr/src/some_api/
 
 # Project initialization
 COPY app /usr/src/some_api/app
-COPY pyproject.toml /usr/src/some_api/
+COPY pyproject.toml poetry.lock /usr/src/some_api/
 
 RUN pip install poetry==${POETRY_VERSION} \
     && poetry config virtualenvs.create false \
